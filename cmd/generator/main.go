@@ -114,7 +114,7 @@ func getGitHubContent(owner, repo, path string) error {
 	ctx := context.Background()
 
 	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: "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"},
+		&oauth2.Token{AccessToken: ""},
 	)
 	tc := oauth2.NewClient(ctx, ts)
 
