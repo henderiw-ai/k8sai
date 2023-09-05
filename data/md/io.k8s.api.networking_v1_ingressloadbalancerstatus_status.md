@@ -1,0 +1,20 @@
+# openAPI schema status for io.k8s.api.networking.v1.IngressLoadBalancerStatus
+
+## description
+
+IngressLoadBalancerStatus represents the status of a load-balancer.
+
+## schema
+
+```yaml
+|
+  description: IngressLoadBalancerStatus represents the status of a load-balancer.
+  properties:
+    ingress:
+      description: ingress is a list containing ingress points for the load-balancer.
+      items:
+        $ref: '#/definitions/io.k8s.api.networking.v1.IngressLoadBalancerIngress'
+      type: array
+  type: object
+
+```

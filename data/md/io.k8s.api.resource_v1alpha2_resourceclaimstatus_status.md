@@ -1,0 +1,44 @@
+# openAPI schema status for io.k8s.api.resource.v1alpha2.ResourceClaimStatus
+
+## description
+
+ResourceClaimStatus tracks whether the resource has been allocated and what the resulting attributes are.
+
+## schema
+
+```yaml
+|
+  description: ResourceClaimStatus tracks whether the resource has been allocated and
+    what the resulting attributes are.
+  properties:
+    allocation:
+      $ref: '#/definitions/io.k8s.api.resource.v1alpha2.AllocationResult'
+      description: Allocation is set by the resource driver once a resource or set of
+        resources has been allocated successfully. If this is not specified, the resources
+        have not been allocated yet.
+    deallocationRequested:
+      description: |-
+        DeallocationRequested indicates that a ResourceClaim is to be deallocated.
+
+        The driver then must deallocate this claim and reset the field together with clearing the Allocation field.
+
+        While DeallocationRequested is set, no new consumers may be added to ReservedFor.
+      type: boolean
+    driverName:
+      description: DriverName is a copy of the driver name from the ResourceClass at
+        the time when allocation started.
+      type: string
+    reservedFor:
+      description: |-
+        ReservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started.
+
+        There can be at most 32 such reservations. This may get increased in the future, but not reduced.
+      items:
+        $ref: '#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaimConsumerReference'
+      type: array
+      x-kubernetes-list-map-keys:
+      - uid
+      x-kubernetes-list-type: map
+  type: object
+
+```

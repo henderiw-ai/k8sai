@@ -1,0 +1,21 @@
+# openAPI schema status for io.k8s.api.core.v1.PodReadinessGate
+
+## description
+
+PodReadinessGate contains the reference to a pod condition
+
+## schema
+
+```yaml
+|
+  description: PodReadinessGate contains the reference to a pod condition
+  properties:
+    conditionType:
+      description: ConditionType refers to a condition in the pod's condition list with
+        matching type.
+      type: string
+  required:
+  - conditionType
+  type: object
+
+```

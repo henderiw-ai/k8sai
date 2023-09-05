@@ -1,0 +1,19 @@
+# openAPI schema status for io.k8s.api.networking.v1alpha1.IPAddressSpec
+
+## description
+
+IPAddressSpec describe the attributes in an IP Address.
+
+## schema
+
+```yaml
+|
+  description: IPAddressSpec describe the attributes in an IP Address.
+  properties:
+    parentRef:
+      $ref: '#/definitions/io.k8s.api.networking.v1alpha1.ParentReference'
+      description: ParentRef references the resource that an IPAddress is attached to.
+        An IPAddress must reference a parent object.
+  type: object
+
+```

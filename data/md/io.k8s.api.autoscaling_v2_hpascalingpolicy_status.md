@@ -1,0 +1,34 @@
+# openAPI schema status for io.k8s.api.autoscaling.v2.HPAScalingPolicy
+
+## description
+
+HPAScalingPolicy is a single policy which must hold true for a specified past interval.
+
+## schema
+
+```yaml
+|
+  description: HPAScalingPolicy is a single policy which must hold true for a specified
+    past interval.
+  properties:
+    periodSeconds:
+      description: periodSeconds specifies the window of time for which the policy should
+        hold true. PeriodSeconds must be greater than zero and less than or equal to
+        1800 (30 min).
+      format: int32
+      type: integer
+    type:
+      description: type is used to specify the scaling policy.
+      type: string
+    value:
+      description: value contains the amount of change which is permitted by the policy.
+        It must be greater than zero
+      format: int32
+      type: integer
+  required:
+  - type
+  - value
+  - periodSeconds
+  type: object
+
+```

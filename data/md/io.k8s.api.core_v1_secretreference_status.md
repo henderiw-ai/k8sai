@@ -1,0 +1,24 @@
+# openAPI schema status for io.k8s.api.core.v1.SecretReference
+
+## description
+
+SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace
+
+## schema
+
+```yaml
+|
+  description: SecretReference represents a Secret Reference. It has enough information
+    to retrieve secret in any namespace
+  properties:
+    name:
+      description: name is unique within a namespace to reference a secret resource.
+      type: string
+    namespace:
+      description: namespace defines the space within which the secret name must be
+        unique.
+      type: string
+  type: object
+  x-kubernetes-map-type: atomic
+
+```

@@ -1,0 +1,19 @@
+# openAPI schema status for io.k8s.api.core.v1.VolumeNodeAffinity
+
+## description
+
+VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.
+
+## schema
+
+```yaml
+|
+  description: VolumeNodeAffinity defines constraints that limit what nodes this volume
+    can be accessed from.
+  properties:
+    required:
+      $ref: '#/definitions/io.k8s.api.core.v1.NodeSelector'
+      description: required specifies hard node constraints that must be met.
+  type: object
+
+```

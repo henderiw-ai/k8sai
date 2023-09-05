@@ -1,0 +1,366 @@
+# openAPI schema part1 for datastream.cnrm.cloud.google.com.v1alpha1.DatastreamStream
+
+## schema
+
+```yaml
+properties:
+  spec:
+    properties:
+      backfillAll:
+        description: Backfill strategy to automatically backfill the Stream's objects.
+          Specific objects can be excluded.
+        properties:
+          mysqlExcludedObjects:
+            description: MySQL data source objects to avoid backfilling.
+            properties:
+              mysqlDatabases:
+                description: MySQL databases on the server.
+                items:
+                  properties:
+                    database:
+                      description: Database name.
+                      type: string
+                    mysqlTables:
+                      description: Tables in the database.
+                      items:
+                        properties:
+                          mysqlColumns:
+                            description: MySQL columns in the schema. When unspecified
+                              as part of include/exclude objects, includes/excludes
+                              everything.
+                            items:
+                              properties:
+                                collation:
+                                  description: Column collation.
+                                  type: string
+                                column:
+                                  description: Column name.
+                                  type: string
+                                dataType:
+                                  description: |-
+                                    The MySQL data type. Full data types list can be found here:
+                                    https://dev.mysql.com/doc/refman/8.0/en/data-types.html.
+                                  type: string
+                                length:
+                                  description: Column length.
+                                  type: integer
+                                nullable:
+                                  description: Whether or not the column can accept
+                                    a null value.
+                                  type: boolean
+                                ordinalPosition:
+                                  description: The ordinal position of the column
+                                    in the table.
+                                  type: integer
+                                primaryKey:
+                                  description: Whether or not the column represents
+                                    a primary key.
+                                  type: boolean
+                              type: object
+                            type: array
+                          table:
+                            description: Table name.
+                            type: string
+                        required:
+                        - table
+                        type: object
+                      type: array
+                  required:
+                  - database
+                  type: object
+                type: array
+            required:
+            - mysqlDatabases
+            type: object
+          oracleExcludedObjects:
+            description: PostgreSQL data source objects to avoid backfilling.
+            properties:
+              oracleSchemas:
+                description: Oracle schemas/databases in the database server.
+                items:
+                  properties:
+                    oracleTables:
+                      description: Tables in the database.
+                      items:
+                        properties:
+                          oracleColumns:
+                            description: Oracle columns in the schema. When unspecified
+                              as part of include/exclude objects, includes/excludes
+                              everything.
+                            items:
+                              properties:
+                                column:
+                                  description: Column name.
+                                  type: string
+                                dataType:
+                                  description: |-
+                                    The Oracle data type. Full data types list can be found here:
+                                    https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html.
+                                  type: string
+                                encoding:
+                                  description: Column encoding.
+                                  type: string
+                                length:
+                                  description: Column length.
+                                  type: integer
+                                nullable:
+                                  description: Whether or not the column can accept
+                                    a null value.
+                                  type: boolean
+                                ordinalPosition:
+                                  description: The ordinal position of the column
+                                    in the table.
+                                  type: integer
+                                precision:
+                                  description: Column precision.
+                                  type: integer
+                                primaryKey:
+                                  description: Whether or not the column represents
+                                    a primary key.
+                                  type: boolean
+                                scale:
+                                  description: Column scale.
+                                  type: integer
+                              type: object
+                            type: array
+                          table:
+                            description: Table name.
+                            type: string
+                        required:
+                        - table
+                        type: object
+                      type: array
+                    schema:
+                      description: Schema name.
+                      type: string
+                  required:
+                  - schema
+                  type: object
+                type: array
+            required:
+            - oracleSchemas
+            type: object
+          postgresqlExcludedObjects:
+            description: PostgreSQL data source objects to avoid backfilling.
+            properties:
+              postgresqlSchemas:
+                description: PostgreSQL schemas on the server.
+                items:
+                  properties:
+                    postgresqlTables:
+                      description: Tables in the schema.
+                      items:
+                        properties:
+                          postgresqlColumns:
+                            description: PostgreSQL columns in the schema. When unspecified
+                              as part of include/exclude objects, includes/excludes
+                              everything.
+                            items:
+                              properties:
+                                column:
+                                  description: Column name.
+                                  type: string
+                                dataType:
+                                  description: |-
+                                    The PostgreSQL data type. Full data types list can be found here:
+                                    https://www.postgresql.org/docs/current/datatype.html.
+                                  type: string
+                                length:
+                                  description: Column length.
+                                  type: integer
+                                nullable:
+                                  description: Whether or not the column can accept
+                                    a null value.
+                                  type: boolean
+                                ordinalPosition:
+                                  description: The ordinal position of the column
+                                    in the table.
+                                  type: integer
+                                precision:
+                                  description: Column precision.
+                                  type: integer
+                                primaryKey:
+                                  description: Whether or not the column represents
+                                    a primary key.
+                                  type: boolean
+                                scale:
+                                  description: Column scale.
+                                  type: integer
+                              type: object
+                            type: array
+                          table:
+                            description: Table name.
+                            type: string
+                        required:
+                        - table
+                        type: object
+                      type: array
+                    schema:
+                      description: Database name.
+                      type: string
+                  required:
+                  - schema
+                  type: object
+                type: array
+            required:
+            - postgresqlSchemas
+            type: object
+        type: object
+      backfillNone:
+        description: Backfill strategy to disable automatic backfill for the Stream's
+          objects.
+        type: object
+        x-kubernetes-preserve-unknown-fields: true
+      customerManagedEncryptionKey:
+        description: |-
+          Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+          will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        type: string
+      desiredState:
+        description: Desired state of the Stream. Set this field to 'RUNNING' to start
+          the stream, and 'PAUSED' to pause the stream.
+        type: string
+      destinationConfig:
+        description: Destination connection profile configuration.
+        properties:
+          bigqueryDestinationConfig:
+            description: A configuration for how data should be loaded to Cloud Storage.
+            properties:
+              dataFreshness:
+                description: |-
+                  The guaranteed data freshness (in seconds) when querying tables created by the stream.
+                  Editing this field will only affect new tables created in the future, but existing tables
+                  will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+                  A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+                type: string
+              singleTargetDataset:
+                description: A single target dataset to which all data will be streamed.
+                properties:
+                  datasetId:
+                    description: |-
+                      Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+                      {project}:{dataset_id}.
+                    type: string
+                required:
+                - datasetId
+                type: object
+              sourceHierarchyDatasets:
+                description: Destination datasets are created so that hierarchy of
+                  the destination data objects matches the source hierarchy.
+                properties:
+                  datasetTemplate:
+                    description: Dataset template used for dynamic dataset creation.
+                    properties:
+                      datasetIdPrefix:
+                        description: |-
+                          If supplied, every created dataset will have its name prefixed by the provided value.
+                          The prefix and name will be separated by an underscore. i.e. _.
+                        type: string
+                      kmsKeyName:
+                        description: |-
+                          Immutable. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+                          table. The BigQuery Service Account associated with your project requires access to this
+                          encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
+                          See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+                        type: string
+                      location:
+                        description: |-
+                          The geographic location where the dataset should reside.
+                          See https://cloud.google.com/bigquery/docs/locations for supported locations.
+                        type: string
+                    required:
+                    - location
+                    type: object
+                required:
+                - datasetTemplate
+                type: object
+            type: object
+          destinationConnectionProfile:
+            description: 'Immutable. Destination connection profile resource. Format:
+              projects/{project}/locations/{location}/connectionProfiles/{name}.'
+            type: string
+          gcsDestinationConfig:
+            description: A configuration for how data should be loaded to Cloud Storage.
+            properties:
+              avroFileFormat:
+                description: AVRO file format configuration.
+                type: object
+                x-kubernetes-preserve-unknown-fields: true
+              fileRotationInterval:
+                description: |-
+                  The maximum duration for which new events are added before a file is closed and a new file is created.
+                  A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+                type: string
+              fileRotationMb:
+                description: The maximum file size to be saved in the bucket.
+                type: integer
+              jsonFileFormat:
+                description: JSON file format configuration.
+                properties:
+                  compression:
+                    description: 'Compression of the loaded JSON file. Possible values:
+                      ["NO_COMPRESSION", "GZIP"].'
+                    type: string
+                  schemaFileFormat:
+                    description: 'The schema file format along JSON data files. Possible
+                      values: ["NO_SCHEMA_FILE", "AVRO_SCHEMA_FILE"].'
+                    type: string
+                type: object
+              path:
+                description: Path inside the Cloud Storage bucket to write data to.
+                type: string
+            type: object
+        required:
+        - destinationConnectionProfile
+        type: object
+      displayName:
+        description: Display name.
+        type: string
+      location:
+        description: Immutable. The name of the location this stream is located in.
+        type: string
+      projectRef:
+        description: The project that this resource belongs to.
+        oneOf:
+        - not:
+            required:
+            - external
+          required:
+          - name
+        - not:
+            anyOf:
+            - required:
+              - name
+            - required:
+              - namespace
+          required:
+          - external
+        properties:
+          external:
+            description: 'Allowed value: The `name` field of a `Project` resource.'
+            type: string
+          name:
+            description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+            type: string
+          namespace:
+            description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+            type: string
+        type: object
+      resourceID:
+        description: Immutable. Optional. The streamId of the resource. Used for creation
+          and acquisition. When unset, the value of `metadata.name` is used as the
+          default.
+        type: string
+      spec:
+        required:
+        - destinationConfig
+        - displayName
+        - location
+        - projectRef
+        - sourceConfig
+        type: object
+required:
+- spec
+type: object
+
+```

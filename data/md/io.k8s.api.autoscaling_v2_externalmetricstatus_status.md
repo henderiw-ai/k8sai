@@ -1,0 +1,25 @@
+# openAPI schema status for io.k8s.api.autoscaling.v2.ExternalMetricStatus
+
+## description
+
+ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
+
+## schema
+
+```yaml
+|
+  description: ExternalMetricStatus indicates the current value of a global metric not
+    associated with any Kubernetes object.
+  properties:
+    current:
+      $ref: '#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus'
+      description: current contains the current value for the given metric
+    metric:
+      $ref: '#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier'
+      description: metric identifies the target metric by name and selector
+  required:
+  - metric
+  - current
+  type: object
+
+```

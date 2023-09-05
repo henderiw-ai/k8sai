@@ -1,0 +1,30 @@
+# openAPI schema status for io.k8s.api.networking.v1alpha1.ParentReference
+
+## description
+
+ParentReference describes a reference to a parent object.
+
+## schema
+
+```yaml
+|
+  description: ParentReference describes a reference to a parent object.
+  properties:
+    group:
+      description: Group is the group of the object being referenced.
+      type: string
+    name:
+      description: Name is the name of the object being referenced.
+      type: string
+    namespace:
+      description: Namespace is the namespace of the object being referenced.
+      type: string
+    resource:
+      description: Resource is the resource of the object being referenced.
+      type: string
+    uid:
+      description: UID is the uid of the object being referenced.
+      type: string
+  type: object
+
+```

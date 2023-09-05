@@ -1,0 +1,19 @@
+# openAPI schema status for io.k8s.api.authentication.v1beta1.SelfSubjectReviewStatus
+
+## description
+
+SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.
+
+## schema
+
+```yaml
+|
+  description: SelfSubjectReviewStatus is filled by the kube-apiserver and sent back
+    to a user.
+  properties:
+    userInfo:
+      $ref: '#/definitions/io.k8s.api.authentication.v1.UserInfo'
+      description: User attributes of the user making this request.
+  type: object
+
+```

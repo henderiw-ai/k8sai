@@ -1,0 +1,27 @@
+# openAPI schema status for io.k8s.api.resource.v1alpha2.ResourceClaimTemplateSpec
+
+## description
+
+ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.
+
+## schema
+
+```yaml
+|
+  description: ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.
+  properties:
+    metadata:
+      $ref: '#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta'
+      description: ObjectMeta may contain labels and annotations that will be copied
+        into the PVC when creating it. No other fields are allowed and will be rejected
+        during validation.
+    spec:
+      $ref: '#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaimSpec'
+      description: Spec for the ResourceClaim. The entire content is copied unchanged
+        into the ResourceClaim that gets created from this template. The same fields
+        as in a ResourceClaim are also valid here.
+  required:
+  - spec
+  type: object
+
+```

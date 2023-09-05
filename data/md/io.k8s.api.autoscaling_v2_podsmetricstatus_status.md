@@ -1,0 +1,25 @@
+# openAPI schema status for io.k8s.api.autoscaling.v2.PodsMetricStatus
+
+## description
+
+PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).
+
+## schema
+
+```yaml
+|
+  description: PodsMetricStatus indicates the current value of a metric describing each
+    pod in the current scale target (for example, transactions-processed-per-second).
+  properties:
+    current:
+      $ref: '#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus'
+      description: current contains the current value for the given metric
+    metric:
+      $ref: '#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier'
+      description: metric identifies the target metric by name and selector
+  required:
+  - metric
+  - current
+  type: object
+
+```

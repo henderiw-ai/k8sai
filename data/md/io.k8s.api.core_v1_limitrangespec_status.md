@@ -1,0 +1,23 @@
+# openAPI schema status for io.k8s.api.core.v1.LimitRangeSpec
+
+## description
+
+LimitRangeSpec defines a min/max usage limit for resources that match on kind.
+
+## schema
+
+```yaml
+|
+  description: LimitRangeSpec defines a min/max usage limit for resources that match
+    on kind.
+  properties:
+    limits:
+      description: Limits is the list of LimitRangeItem objects that are enforced.
+      items:
+        $ref: '#/definitions/io.k8s.api.core.v1.LimitRangeItem'
+      type: array
+  required:
+  - limits
+  type: object
+
+```

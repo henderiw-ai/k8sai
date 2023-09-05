@@ -1,0 +1,25 @@
+# openAPI schema status for io.k8s.api.flowcontrol.v1beta3.FlowSchemaStatus
+
+## description
+
+FlowSchemaStatus represents the current state of a FlowSchema.
+
+## schema
+
+```yaml
+|
+  description: FlowSchemaStatus represents the current state of a FlowSchema.
+  properties:
+    conditions:
+      description: '`conditions` is a list of the current states of FlowSchema.'
+      items:
+        $ref: '#/definitions/io.k8s.api.flowcontrol.v1beta3.FlowSchemaCondition'
+      type: array
+      x-kubernetes-list-map-keys:
+      - type
+      x-kubernetes-list-type: map
+      x-kubernetes-patch-merge-key: type
+      x-kubernetes-patch-strategy: merge
+  type: object
+
+```
